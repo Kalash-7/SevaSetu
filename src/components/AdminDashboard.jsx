@@ -4,6 +4,17 @@ import { collection, addDoc, onSnapshot, query, orderBy } from 'firebase/firesto
 import { db } from '../firebase';
 import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+// OVERRIDE LEAFLET'S DEFAULT ICON PATHS
+// This fixes the missing blue pins issue in Vercel production
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+});
 
 const locationOptions = [
   { name: 'Aminabad Market', lat: 26.8415, lng: 80.9231 },
