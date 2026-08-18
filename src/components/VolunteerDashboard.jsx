@@ -152,6 +152,11 @@ const VolunteerDashboard = () => {
     }
   };
 
+  const openDirections = (taskLat, taskLng) => {
+    const url = `https://www.google.com/maps/dir/?api=1&origin=${currentLocation.lat},${currentLocation.lng}&destination=${taskLat},${taskLng}`;
+    window.open(url, '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans flex flex-col">
       {/* Top Navigation */}
@@ -370,14 +375,32 @@ const VolunteerDashboard = () => {
                     )}
                   </div>
 
-                  {!activeDeployment && (
-                    <button
-                      onClick={() => handleClaimTask(task.id)}
-                      className="mt-6 w-full bg-orange-500 hover:bg-orange-600 text-white font-extrabold py-4 rounded-xl text-lg shadow-[0_4px_14px_0_rgba(249,115,22,0.39)] hover:shadow-[0_6px_20px_rgba(249,115,22,0.23)] hover:-translate-y-0.5 transition-all duration-200"
-                    >
-                      CLAIM TASK
-                    </button>
-                  )}
+                  <div className="mt-6 flex flex-col gap-3">
+                    {task.lat && task.lng && (
+                      task.lat === currentLocation.lat && task.lng === currentLocation.lng ? (
+                        <div className="w-full bg-green-50 text-green-700 font-bold py-3 rounded-xl border border-green-200 text-center flex items-center justify-center gap-2 shadow-sm">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                          You are in the required location
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => openDirections(task.lat, task.lng)}
+                          className="w-full bg-white hover:bg-slate-50 text-slate-700 font-bold py-3 rounded-xl border border-slate-200 shadow-sm transition-colors flex items-center justify-center gap-2"
+                        >
+                          <span className="text-lg">🗺️</span> Get Directions
+                        </button>
+                      )
+                    )}
+                    
+                    {!activeDeployment && (
+                      <button
+                        onClick={() => handleClaimTask(task.id)}
+                        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-extrabold py-4 rounded-xl text-lg shadow-[0_4px_14px_0_rgba(249,115,22,0.39)] hover:shadow-[0_6px_20px_rgba(249,115,22,0.23)] hover:-translate-y-0.5 transition-all duration-200"
+                      >
+                        CLAIM TASK
+                      </button>
+                    )}
+                  </div>
                 </div>
               ))
             )}
