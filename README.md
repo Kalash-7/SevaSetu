@@ -1,16 +1,65 @@
-# React + Vite
+# SevaSetu
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![SevaSetu Banner](public/favicon.svg) <!-- Replace with an actual banner if needed -->
 
-Currently, two official plugins are available:
+**SevaSetu** is a rapid volunteer and resource coordination platform built for emergency response. It connects administrators who deploy resources with on-the-ground volunteers equipped to handle crises efficiently. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+By leveraging real-time data and Google's Gemini AI, SevaSetu intelligently matches volunteers to emergencies based on geographic proximity and semantic skill-matching. It also streamlines post-action reporting using Vision AI.
 
-## React Compiler
+## Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Live Operations Map:** Real-time geo-tracking of active deployments via `react-leaflet`.
+- **AI Smart Dispatch:** Utilizes `gemini-3.5-flash` to semantically match volunteer skills to critical emergencies.
+- **Vision AI Reporting:** Volunteers can upload photos of handwritten field notes, which the AI automatically parses and summarizes.
+- **Role-Based Workflows:** Distinct Admin and Volunteer dashboards built on Firebase Authentication.
+- **Fully Responsive:** Sleek, modern UI built with Tailwind CSS.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Prerequisites
+
+Before running SevaSetu on your local machine, ensure you have the following installed and configured:
+
+1. **Node.js** (v18.0 or higher) and `npm`
+2. **Git**
+3. **Firebase Account:** 
+   - A Firebase project with **Firestore Database** and **Authentication** (Email/Password) enabled.
+4. **Google Gemini API Key:**
+   - Obtain an API key from Google AI Studio to power the Smart Match and Vision AI features.
+
+---
+
+## Installation & Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd sevasetu
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables**
+   Create a `.env` file in the root directory and add your keys:
+   ```env
+   VITE_FIREBASE_API_KEY=your_firebase_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+   VITE_FIREBASE_PROJECT_ID=your_project_id
+   VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+   VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+   VITE_FIREBASE_APP_ID=your_app_id
+   VITE_GEMINI_API_KEY=your_gemini_api_key
+   ```
+
+4. **Start the Development Server**
+   ```bash
+   npm run dev
+   ```
+   Open `http://localhost:5173` to view it in the browser.
+
+---
+
+*Built for the community, powered by AI.*
