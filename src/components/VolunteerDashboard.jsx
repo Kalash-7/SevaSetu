@@ -168,16 +168,16 @@ const VolunteerDashboard = () => {
             <span className="text-slate-600 font-semibold text-base md:text-lg border-l-2 border-slate-200 pl-2">Volunteer</span>
           </div>
 
-          <div className="flex items-center gap-4">
-            <button onClick={() => navigate('/')} className="text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors hidden sm:inline-block mr-2">Home</button>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <button onClick={() => navigate('/')} className="text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors hidden sm:inline-block">Home</button>
 
             {/* My Location Dropdown */}
-            <div className="hidden md:flex items-center gap-1.5 mr-2 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
-              <svg className="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            <div className="flex items-center gap-1 sm:gap-1.5 bg-slate-100 px-2 sm:px-3 py-1.5 rounded-lg border border-slate-200">
+              <svg className="w-4 h-4 text-teal-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
               <select
                 value={currentLocation.name}
                 onChange={(e) => setCurrentLocation(locationOptions.find(l => l.name === e.target.value))}
-                className="bg-transparent text-sm font-bold text-slate-700 focus:outline-none cursor-pointer"
+                className="bg-transparent text-xs sm:text-sm font-bold text-slate-700 focus:outline-none cursor-pointer w-[80px] sm:w-auto text-ellipsis"
               >
                 {locationOptions.map((loc, idx) => (
                   <option key={idx} value={loc.name}>{loc.name}</option>
@@ -187,7 +187,7 @@ const VolunteerDashboard = () => {
 
             {/* Toggle Switch */}
             <div className="flex items-center gap-2">
-              <span className={`text-sm font-bold ${isAvailable ? 'text-green-600' : 'text-slate-400'}`}>
+              <span className={`hidden sm:inline-block text-sm font-bold ${isAvailable ? 'text-green-600' : 'text-slate-400'}`}>
                 {isAvailable ? 'Available Now' : 'Offline'}
               </span>
               <button
