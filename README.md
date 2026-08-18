@@ -1,7 +1,5 @@
 # SevaSetu
 
-![SevaSetu Banner](public/favicon.svg) <!-- Replace with an actual banner if needed -->
-
 **SevaSetu** is a rapid volunteer and resource coordination platform built for emergency response. It connects administrators who deploy resources with on-the-ground volunteers equipped to handle crises efficiently. 
 
 By leveraging real-time data and Google's Gemini AI, SevaSetu intelligently matches volunteers to emergencies based on geographic proximity and semantic skill-matching. It also streamlines post-action reporting using Vision AI.
@@ -62,4 +60,3 @@ Before running SevaSetu on your local machine, ensure you have the following ins
 
 ---
 
-*Built for the community, powered by AI.*
